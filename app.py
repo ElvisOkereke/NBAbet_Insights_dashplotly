@@ -8,6 +8,8 @@ import requests
 import threading
 import time
 import uvicorn
+import subprocess
+import sys
 from src.api.main import app as fastapi_app
 from src.data.data_service import DataService
 
@@ -21,8 +23,12 @@ app.title = "NBA Betting Research MVP"
 
 # Start FastAPI server in background thread
 def start_fastapi():
-    uvicorn.run(fastapi_app, host="127.0.0.1", port=8000, log_level="warning")
-
+    subprocess.Popen([
+        sys.executable, "-m", "uvicorn", "src.api.main:app",
+        "--host", "127.0.0.1",
+        "--port", "8080",
+        "--log-level", "warning"
+    ])
 api_thread = threading.Thread(target=start_fastapi, daemon=True)
 api_thread.start()
 
@@ -30,7 +36,7 @@ api_thread.start()
 time.sleep(2)
 
 # API base URL
-API_BASE = "http://127.0.0.1:8000/api"
+API_BASE = "http://127.0.0.1:8080/api"
 
 # App layout
 app.layout = dbc.Container([

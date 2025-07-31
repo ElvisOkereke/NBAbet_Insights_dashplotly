@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+env/
+venv/
+ENV/
+
+# Dash
+assets/
+
+# VSCode
+.vscode/
+
+# Logs
+*.log
+
+# Environment files
+.env
+
+# SQLite Database
+*.sqlite
+
+# Packages
+*.egg
+*.eggs
+*.egg-info
+
+# PyInstaller
+*.spec
+
+# OS Files
+.DS_Store
+Thumbs.db
